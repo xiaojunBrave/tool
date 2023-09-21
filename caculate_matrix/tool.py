@@ -7,6 +7,8 @@
 """
 import numpy as np
 import math
+np.set_printoptions(suppress=True)
+
 f_carmera = 910.0
 move_len = 50.0
 def getCameraPosion(xl, yl, xr, yr):
@@ -53,3 +55,9 @@ def rotationMatrixToEulerAngles(R):
         z = 0
 
     return np.array([x, y, z])
+
+def getRotationAndTransferMatrix(postion):
+    r_matrix = eulerAnglesToRotationMatrix(postion[3:6])
+    r_t_matrix = np.c_[np.r_[r_matrix,np.array([[0, 0, 0]], dtype=float)], np.array([[postion[0],postion[1],
+                                                                                     postion[2], 1.0]], dtype=float).T]
+    return r_t_matrix
