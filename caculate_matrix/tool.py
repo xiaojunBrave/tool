@@ -7,6 +7,7 @@
 """
 import numpy as np
 import math
+from scipy.spatial.transform import Rotation as R
 np.set_printoptions(suppress=True)
 
 f_carmera = 910.0
@@ -61,3 +62,21 @@ def getRotationAndTransferMatrix(postion):
     r_t_matrix = np.c_[np.r_[r_matrix,np.array([[0, 0, 0]], dtype=float)], np.array([[postion[0],postion[1],
                                                                                      postion[2], 1.0]], dtype=float).T]
     return r_t_matrix
+
+def euler2rot(euler):
+    r = R.from_euler('xyz', euler, degrees=False)
+    rotation_matrix = r.as_matrix()
+    return rotation_matrix
+
+def eor2euler(matrix):
+    r = R.from_matrix(matrix)
+    euler = r.as_euler('xyz', degrees=False)
+    return euler
+
+# print(euler2rot(np.array([-3.07759265, -0.58259265, -1.36759265])))
+# print(euler2rot(np.array([0.064,-2.559,1.774])))
+#
+# print(eor2euler(euler2rot(np.array([0.064,-2.559,1.774]))))
+# print(rotationMatrixToEulerAngles(euler2rot(np.array([0.064,-2.559,1.774]))))
+
+

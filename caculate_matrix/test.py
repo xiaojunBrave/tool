@@ -99,8 +99,8 @@ t_position = dt.tcp_base.copy()
 # c_right = np.array([[147,239],[766,90],[975,126],[553,456],[551,530],[815,540]])
 
 # test data_flower_3
-c_left = np.array([[969,372]])
-c_right = np.array([[835,373]])
+c_left = np.array([[411,252]])
+c_right = np.array([[291,244]])
 # # test data
 c_positions = np.ones((c_right.shape[0],3),dtype=float)
 for i in range(c_positions.shape[0]):
