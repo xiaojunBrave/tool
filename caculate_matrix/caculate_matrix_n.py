@@ -1,20 +1,24 @@
-"""
-@Project :tool
-@File    :cacalate_matrix.py
-@IDE     :PyCharm
-@Author  :xiaoj
-@Date    :2023/9/7 10:39
-"""
+# -*- coding: utf-8 -*-
+# @Time    : 2023/9/21 23:21
+# @Author  : xiaoj
+# @File    : caculate_matrix_n.py
+# @Desc    :
 import numpy as np
 import sympy as sp
 import tool as tl
 import data as dt
+from numpy.linalg import inv
 np.set_printoptions(suppress=True)
 # data
 tcp_base = dt.tcp_base.copy()
 tcp_target_modify = dt.tcp_target_modify.copy()
 camera_left = dt.camera_left.copy()
 camera_right = dt.camera_right.copy()
+
+tcp_base_r_t_matrix = tl.getRotationAndTransferMatrix(tcp_base)
+tcp_base_r_t_matrix_inv = inv(tcp_base_r_t_matrix)
+
+
 
 # get tcp position
 tcp_target_modify[:,0:1] -= tcp_base[0]
@@ -45,6 +49,4 @@ selected_row = [0,1,2,3]
 A = sp.Matrix(camera_targets_argument[selected_row, :])
 B = sp.Matrix(tcp_targets_argument[selected_row,:])
 X = A.solve(B)
-print(X.T)
-
-
+# print(X.T)

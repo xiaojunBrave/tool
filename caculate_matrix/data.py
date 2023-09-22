@@ -7,10 +7,10 @@
 """
 import numpy as np
 # data
-# tcp_base = np.array([-84.77,-340.9,609.49,0.064,-2.559,1.774])
-tcp_base = np.array([150,30,450,3.0543,-1.0472,0])
+tcp_base = np.array([-84.77,-340.9,609.49,0.064,-2.559,1.774])
+# tcp_base = np.array([150,30,450,3.0543,-1.0472,0])
 
-data_version = 7
+data_version = 3
 # ****************data_version_0*************************
 camera_left_0 = np.array([
                [154,31],[361,45],[562,59],[806,80],[1043,97],
