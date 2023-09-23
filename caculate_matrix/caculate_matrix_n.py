@@ -25,6 +25,7 @@ for i in range(tcp_target_modify.shape[0]):
     matrix_tcp = tcp_base_r_t_matrix_inv.dot(matrix_base)
     tcp_targets[i:i+1, 0:3] = matrix_tcp[0:3, 3:4].T
 
+print(tcp_targets)
 # get camera position
 camera_positions = np.ones((tcp_targets.shape[0], 3), dtype=float)
 for i in range(tcp_targets.shape[0]):
@@ -44,7 +45,7 @@ camera_targets_argument = np.c_[camera_targets, np.ones((camera_targets.shape[0]
 # selected_row = [0,2,4,5]
 
 # data_5
-selected_row = [0,1,2,3]
+selected_row = [0,1,2,4]
 
 A = sp.Matrix(camera_targets_argument[selected_row, :])
 B = sp.Matrix(tcp_targets_argument[selected_row,:])
