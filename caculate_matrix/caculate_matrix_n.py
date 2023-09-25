@@ -10,7 +10,7 @@ import data as dt
 from numpy.linalg import inv
 np.set_printoptions(suppress=True)
 # data
-tcp_base = dt.tcp_base1.copy()
+tcp_base = dt.tcp_base.copy()
 tcp_target_modify = dt.tcp_target_modify.copy()
 camera_left = dt.camera_left.copy()
 camera_right = dt.camera_right.copy()
@@ -52,14 +52,4 @@ A = sp.Matrix(camera_targets_argument[selected_row, :])
 B = sp.Matrix(tcp_targets_argument[selected_row,:])
 X = A.solve(B)
 print(X.T)
-'''
-[[-0.106497160325154, -1.00773517649817, 0.642767085959976, 57.4437520379993],
- [0.957603943422352, -0.0759720891623117, -0.472737587315592, -59.0254144848690],
-  [-0.213392949958245, 0.198724806697062, 1.04795938182837, -172.560867995043],
-   [0, 0, 0, 1.00000000000000]]
-   
-[[-0.984139775154833, -0.0616359944900768, 0.748788122816705, 37.0237426342272],
- [-0.0267585438185594, 0.737800331815911, -0.964225282829529, 57.5112237559019],
-  [0.0680910566678787, -0.715992435459918, -0.494403853441185, 178.557382905243],
-   [0, 0, 0, 1.00000000000000]]
-'''
+

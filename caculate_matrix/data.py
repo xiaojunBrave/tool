@@ -7,12 +7,9 @@
 """
 import numpy as np
 # data
-tcp_base = np.array([25.53,-3116,626.53,0.101,-2.755,1.518])
-tcp_base1 = np.array([9.45,-365.81,421.16,0.126,-2.392,2.01])
-
-
-data_version = 1
+data_version = 2
 # ****************data_version_0*************************
+tcp_base_0 = np.array([25.53,-3116,626.53,0.101,-2.755,1.518])
 camera_left_0 = np.array([
                [178,468],[601,345],[611,664],[584,296],[596,488],[846,462]
                ])
@@ -29,6 +26,7 @@ tcp_target_modify_0 = np.array([
 ])
 # ****************data_version_0*************************
 # ****************data_version_1*************************
+tcp_base_1 = np.array([9.45,-365.81,421.16,0.126,-2.392,2.01])
 camera_left_1 = np.array([
                [537,444],[536,700],[864,679],[731,672],[967,674],[723,363]
                ])
@@ -43,11 +41,30 @@ tcp_target_modify_1 = np.array([
                      [-54.29, -527.24, 405.88, 0.126, -2.392, 2.01],
                      [27.15, -571.5, 490.47, 0.126, -2.392, 2.01],
 ])
-# ****************data_version_0*************************
+# ****************data_version_1*************************
+# ****************data_version_2*************************
+tcp_base_2 = np.array([102.55,-229.30,368.29,0.681,-2.088,2.25])
+camera_left_2 = np.array([
+               [488,338],[1035,485],[683,630],[616,338],[1019,445],[766,543]
+               ])
+camera_right_2 = np.array([
+                 [394,303],[917,444],[571,581],[545,312],[933,415],[683,509]
+                 ])
+tcp_target_modify_2 = np.array([
+                     [314.32, -470.77, 438.78, 0.681, -2.088, 2.25],
+                     [71.89, -514.63, 453.01, 0.681, -2.088, 2.25],
+                     [185.83, -437.47, 361.93, 0.681, -2.088, 2.25],
+                     [305.16, -625.01, 440.18, 0.681, -2.088, 2.25],
+                     [63.11, -663.32, 454.30, 0.681, -2.088, 2.25],
+                     [176.33, -588.86, 363.19, 0.681, -2.088, 2.25],
+])
+# ****************data_version_2*************************
+tcp_bases = [tcp_base_0,tcp_base_1,tcp_base_2]
+camera_lefts = [camera_left_0,camera_left_1,camera_left_2]
+camera_rights = [camera_right_0,camera_right_1,camera_right_2]
+tcp_target_modifys = [tcp_target_modify_0,tcp_target_modify_1,tcp_target_modify_2]
 
-camera_lefts = [camera_left_0,camera_left_1]
-camera_rights = [camera_right_0,camera_right_1]
-tcp_target_modifys = [tcp_target_modify_0,tcp_target_modify_1]
 camera_left = camera_lefts[data_version]
 camera_right = camera_rights[data_version]
 tcp_target_modify = tcp_target_modifys[data_version]
+tcp_base = tcp_bases[data_version]
