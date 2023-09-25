@@ -13,8 +13,8 @@ import numpy as np
 X = cm.X
 t_position = dt.tcp_base.copy()
 t_matrix = tl.getRotationAndTransferMatrix(t_position)
-c_left = np.array([[723,363]])
-c_right = np.array([[574,353]])
+c_left = np.array([[846,462]])
+c_right = np.array([[768,457]])
 # test data
 c_positions = np.ones((c_right.shape[0], 3), dtype=float)
 for i in range(c_positions.shape[0]):
@@ -23,7 +23,7 @@ for i in range(c_positions.shape[0]):
 # print(c_positions)
 c_positions_argument = np.c_[c_positions, np.ones((c_right.shape[0], 1), dtype=float)]
 tcp_targets = c_positions_argument.dot(X)
-
+print(tcp_targets)
 base_target = []
 for i in range(tcp_targets.shape[0]):
     tcp = np.zeros(6,dtype=float)
