@@ -79,4 +79,23 @@ def eor2euler(matrix):
 # print(eor2euler(euler2rot(np.array([0.064,-2.559,1.774]))))
 # print(rotationMatrixToEulerAngles(euler2rot(np.array([0.064,-2.559,1.774]))))
 
+shift_matrix = np.array([[1,0,0,0],
+                         [0,1,0,0],
+                         [0,0,1,0.2],
+                         [0,0,0,1]])
+m = getRotationAndTransferMatrix(np.array([-0.08257,-0.32168,0.53478,0.126,-2.392,2.01 ]))
+r = m.dot(shift_matrix)
+print(m)
+print(r)
+
+'''
+x + 100
+-182.2,-326.91,541.06
+Y + 100
+-89.73,-304.64,436.49
+z + 200
+-74.40,-518.47,500.07
+合
+-181.23，-506.65，408.17
+'''
 
