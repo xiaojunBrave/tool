@@ -8,10 +8,19 @@
 import numpy as np
 import math
 import cv2 as cv
+import data as dt
 np.set_printoptions(suppress=True)
 f_carmera = 910.0
 move_len = 50.0
 def getCameraPosion(xl, yl, xr, yr):
+    '''
+    双目测距
+    :param xl:
+    :param yl:
+    :param xr:
+    :param yr:
+    :return:
+    '''
     z = f_carmera * move_len / (xl - xr)
     x = xl*z / f_carmera
     y = yl*z / f_carmera
@@ -59,16 +68,8 @@ def rotateVector2Matrix(rot_vector):
     :param rot_vector:
     :return:
     '''
-    theta = np.linalg.norm(rot_vector)
-    rot_vector = np.array(rot_vector).reshape(3, 1) / theta
-    K = np.asanyarray(
-        [
-            [0, -rot_vector[2, 0], rot_vector[1, 0]],
-            [rot_vector[2, 0], 0, -rot_vector[0, 0]],
-            [-rot_vector[1, 0], rot_vector[0, 0], 0]
-        ]
-    )
-    return np.asanyarray(np.cos(theta)*np.eye(3) + (1 - np.cos(theta))*rot_vector*rot_vector.T + np.sin(theta) * K )
+    r = cv.Rodrigues(rot_vector)[0]
+    return r
 def matrxi2RotateVector(matrix):
     vec = cv.Rodrigues(matrix)[0]
     return vec
@@ -88,6 +89,11 @@ z + 200
 合
 -181.23，-506.65，408.17
 '''
+# tt = np.array([[1,0,0,0],
+#                [0,1,0,0],
+#                [0,0,1,0.2],
+#                [0,0,0,1]])
+# print(getRotationAndTransferMatrix(np.array([-0.08257,-0.32168,0.53478,0.126,-2.392,2.01 ])).dot(tt))
 
 
 

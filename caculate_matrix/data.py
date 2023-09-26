@@ -7,7 +7,11 @@
 """
 import numpy as np
 # data
-data_version = 1
+data_version = 2
+move_brush = np.array([[1,0,0,0],
+                         [0,1,0,0],
+                         [0,0,1,200],
+                         [0,0,0,1]])
 # ****************data_version_0*************************
 tcp_base_0 = np.array([25.53,-3116,626.53,0.101,-2.755,1.518])
 camera_left_0 = np.array([
