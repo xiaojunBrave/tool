@@ -9,7 +9,6 @@ import numpy as np
 import math
 import cv2 as cv
 np.set_printoptions(suppress=True)
-
 f_carmera = 910.0
 move_len = 50.0
 def getCameraPosion(xl, yl, xr, yr):
@@ -17,8 +16,6 @@ def getCameraPosion(xl, yl, xr, yr):
     x = xl*z / f_carmera
     y = yl*z / f_carmera
     return x,y,z
-
-
 def eulerAnglesToRotationMatrix(theta):
     '''
     欧拉角（弧度）到旋转矩阵
@@ -33,17 +30,12 @@ def eulerAnglesToRotationMatrix(theta):
                     [0, 1, 0],
                     [-math.sin(theta[1]), 0, math.cos(theta[1])]])
     # print(R_y)
-
     R_z = np.array([[math.cos(theta[2]), -math.sin(theta[2]), 0],
                     [math.sin(theta[2]), math.cos(theta[2]), 0],
                     [0, 0, 1]])
     # print(R_z)
-
     R = np.dot(R_z, np.dot(R_y, R_x))
-
     return R
-
-
 def rotationMatrixToEulerAngles(R):
     '''
     旋转矩阵转换欧拉角（弧度）
@@ -51,9 +43,7 @@ def rotationMatrixToEulerAngles(R):
     :return:
     '''
     sy = math.sqrt(R[0, 0] * R[0, 0] + R[1, 0] * R[1, 0])
-
     singular = sy < 1e-6
-
     if not singular:
         x = math.atan2(R[2, 1], R[2, 2])
         y = math.atan2(-R[2, 0], sy)
@@ -62,10 +52,7 @@ def rotationMatrixToEulerAngles(R):
         x = math.atan2(-R[1, 2], R[1, 1])
         y = math.atan2(-R[2, 0], sy)
         z = 0
-
     return np.array([x, y, z])
-
-
 def rotateVector2Matrix(rot_vector):
     '''
     旋转矢量转化为旋转矩阵
@@ -82,7 +69,6 @@ def rotateVector2Matrix(rot_vector):
         ]
     )
     return np.asanyarray(np.cos(theta)*np.eye(3) + (1 - np.cos(theta))*rot_vector*rot_vector.T + np.sin(theta) * K )
-
 def matrxi2RotateVector(matrix):
     vec = cv.Rodrigues(matrix)[0]
     return vec
@@ -91,8 +77,6 @@ def getRotationAndTransferMatrix(postion):
     r_t_matrix = np.c_[np.r_[r_matrix,np.array([[0, 0, 0]], dtype=float)], np.array([[postion[0],postion[1],
                                                                                      postion[2], 1.0]], dtype=float).T]
     return r_t_matrix
-
-m = rotateVector2Matrix(np.array([-0.08257,-0.32168,0.53478,0.126,-2.392,2.01 ])[3:6])
 '''
 -0.08257,-0.32168,0.53478,0.126,-2.392,2.01 
 x + 100
