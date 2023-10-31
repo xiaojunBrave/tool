@@ -70,8 +70,8 @@ X = cm.X
 t_position = dt.tcp_base.copy()
 
 # test data_flower_3
-c_left = np.array([[411,252]])
-c_right = np.array([[291,244]])
+c_left = np.array([[671,612],[673,612]])
+c_right = np.array([[530,603],[534,602]])
 # # test data
 c_positions = np.ones((c_right.shape[0],3),dtype=float)
 for i in range(c_positions.shape[0]):
@@ -85,3 +85,13 @@ result[:,1:2] += t_position[1]
 result[:,2:3] += t_position[2]
 # print(X)
 print(result)
+#
+# tcp_base_1 = np.array([-82.57,-321.68,534.78,0.126,-2.392,2.01])
+#
+# width = 1280
+# height = 720
+# fU_left = 0.524219 * width
+# fV_left = 0.850694 * height
+# fU_right = 0.414453 * width
+# fV_right = 0.8375 * height
+# print(fU_left, fV_left, fU_right, fV_right)

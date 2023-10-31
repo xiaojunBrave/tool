@@ -22,8 +22,8 @@ def getCameraPosion(xl, yl, xr, yr):
     :return:
     '''
     z = f_carmera * move_len / (xl - xr)
-    x = xl*z / f_carmera
-    y = yl*z / f_carmera
+    x = (xl - 640)*z / f_carmera
+    y = (yl - 360)*z / f_carmera
     return x,y,z
 def eulerAnglesToRotationMatrix(theta):
     '''

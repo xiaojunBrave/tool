@@ -7,16 +7,16 @@
 """
 
 import data as dt
-import caculate_matrix_n as cm
+import caculate_matrix_new as cm
 import tool as tl
 import numpy as np
 X = cm.X
 move_brush = dt.move_brush.copy()
 move_brush[0:3,3:4] = move_brush[0:3,3:4] * -1
-t_position = dt.tcp_base_1.copy()
+t_position = dt.tcp_base_2.copy()
 t_matrix = tl.getRotationAndTransferMatrix(t_position)
-c_left = np.array([[967,674]])
-c_right = np.array([[810,662]])
+c_left = np.array([[488,338],[1035,485],[683,630],[616,338],[1019,445],[766,543]])
+c_right = np.array([[394,303],[917,444],[571,581],[545,312],[933,415],[683,509]])
 # test data
 c_positions = np.ones((c_right.shape[0], 3), dtype=float)
 for i in range(c_positions.shape[0]):

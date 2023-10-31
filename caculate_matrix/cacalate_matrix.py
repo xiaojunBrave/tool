@@ -40,7 +40,7 @@ camera_targets_argument = np.c_[camera_targets, np.ones((camera_targets.shape[0]
 # selected_row = [0,2,4,5]
 
 # data_5
-selected_row = [0,1,2,3]
+selected_row = [0,1,2,4]
 
 A = sp.Matrix(camera_targets_argument[selected_row, :])
 B = sp.Matrix(tcp_targets_argument[selected_row,:])
