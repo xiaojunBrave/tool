@@ -7,7 +7,7 @@
 """
 import numpy as np
 # data
-data_version = 1
+data_version = 4
 move_brush = np.array([[1,0,0,0],
                          [0,1,0,0],
                          [0,0,1,200],
@@ -63,10 +63,49 @@ tcp_target_modify_2 = np.array([
                      [176.33, -588.86, 363.19, 0.681, -2.088, 2.25],
 ])
 # ****************data_version_2*************************
-tcp_bases = [tcp_base_0,tcp_base_1,tcp_base_2]
-camera_lefts = [camera_left_0,camera_left_1,camera_left_2]
-camera_rights = [camera_right_0,camera_right_1,camera_right_2]
-tcp_target_modifys = [tcp_target_modify_0,tcp_target_modify_1,tcp_target_modify_2]
+# ****************data_version_3*************************
+tcp_base_3 = np.array([-25.37,-274.90,684.05,0.022,2.762,-1.391])
+camera_left_3 = np.array([
+               [594,286],[769,238],[776,405],[608,113],[759,89],[758,238]
+               ])
+camera_right_3 = np.array([
+                 [487,288],[668,240],[680,406],[522,115],[676,91],[677,240]
+                 ])
+tcp_target_modify_3 = np.array([
+                     [36.81, -591.71, 585.06, 0.022, 2.762, -1.391],
+                     [-48.89, -626.14, 583.95, 0.022, 2.762, -1.391],
+                     [-53.52, -579.67, 509.19, 0.022, 2.762, -1.391],
+                     [35.48, -735.01, 585.81, 0.022, 2.762, -1.391],
+                     [-53.44, -758.89, 584.19, 0.022, 2.762, -1.391],
+                     [-53.06, -711.96, 509.37, 0.022, 2.762, -1.391],
+])
+# ****************data_version_3*************************
+# ****************data_version_4*************************
+tcp_base_4 = np.array([-48.27,-321.32,516.40,0.211, -2.569, 1.833])
+camera_left_4 = np.array([
+               [655,266],[812,502],[447,192],[458,611],[941,393]
+               ])
+camera_right_4 = np.array([
+                 [568,255],[725,490],[296,175],[302,590],[804,376]
+                 ])
+tcp_target_modify_4 = np.array([
+                     [124.25,-728.35,480.45,0.211, -2.569, 1.833],
+    [19.14, -674.98, 368.55, 0.211, -2.569, 1.833],
+    [176.91, -533.83, 586.77, 0.211, -2.569, 1.833],
+    [155.13, -459.21, 478.14, 0.211, -2.569, 1.833],
+    [-0.09, -555.40, 522.76, 0.211, -2.569, 1.833],
+])
+'''
+[[-0.988206620423058, -0.117554917769407, 0.0866240579340744, 129.384967997709],
+ [-0.177496978817802, 0.511571295230486, -0.823174544269149, 52.6475814476195], 
+ [0.0539257117337123, -0.860899731958444, -0.491051261605617, 173.890912402881], 
+ [0, 0, 0, 1.00000000000000]]
+'''
+# ****************data_version_4*************************
+tcp_bases = [tcp_base_0,tcp_base_1,tcp_base_2,tcp_base_3,tcp_base_4]
+camera_lefts = [camera_left_0,camera_left_1,camera_left_2,camera_left_3,camera_left_4]
+camera_rights = [camera_right_0,camera_right_1,camera_right_2,camera_right_3,camera_right_4]
+tcp_target_modifys = [tcp_target_modify_0,tcp_target_modify_1,tcp_target_modify_2,tcp_target_modify_3,tcp_target_modify_4]
 
 camera_left = camera_lefts[data_version]
 camera_right = camera_rights[data_version]
