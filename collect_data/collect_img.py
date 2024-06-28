@@ -7,6 +7,7 @@
 """
 import cv2
 import time
+from PyCameraList.camera_device import test_list_cameras, list_video_devices, list_audio_devices
 save_dir = '../../datasets/fake_flower_v1/images/train/'
 width = 640
 height = 480
@@ -19,8 +20,8 @@ def save_frame(frame,num):
     cv2.imwrite(filename, frame)
 
 def main(resolution=(640, 480), fps=30):
-    # 打开摄像头
-    cap = cv2.VideoCapture(0)
+    # 打开摄像头 选择正确摄像头id
+    cap = cv2.VideoCapture(3)
     original_fps = cap.get(cv2.CAP_PROP_FPS)
     original_resolution = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
     print(f"原始摄像头帧率: {original_fps}")
@@ -49,4 +50,6 @@ def main(resolution=(640, 480), fps=30):
 
 if __name__ == '__main__':
     # 设置分辨率为640x480，帧率为30
+    # cameras = list_video_devices()
+    # print(dict(cameras))
     main(resolution=(width, height), fps=fps)
