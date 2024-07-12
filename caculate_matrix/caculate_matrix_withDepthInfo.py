@@ -14,6 +14,10 @@ from numpy.linalg import inv
 tcp_base = dt.tcp_base
 camera_coordinates = dt.camera_coordinate
 tcp_coordinates = dt.tcp_coordinate
+
+# tcp_base[:,0:3] *= 0.001
+# tcp_coordinates[:,0:3] *= 0.001
+
 tcp_base_r_t_matrixs = []
 tcp_base_r_t_matrix_invs = []
 for i in range(tcp_base.shape[0]):
@@ -33,7 +37,7 @@ tcp_positions = np.zeros((tcp_coordinates.shape[0], 6), dtype=float)
 for i in range(tcp_coordinates.shape[0]):
     matrix_base = tl.getRotationAndTransferMatrix(tcp_coordinates[i, :])
     true_base = matrix_base.dot(dt.move_brush)
-    print(true_base)
+    # print(true_base)
     matrix_tcp = tcp_base_r_t_matrix_invs[i].dot(true_base)
     tcp_positions[i:i + 1, 0:3] = matrix_tcp[0:3, 3:4].T
 
@@ -44,14 +48,11 @@ camera_data = camera_positions
 tcp_argument = np.c_[tcp_data, np.ones((tcp_data.shape[0], 1), dtype=float)]
 camera_argument = np.c_[camera_data, np.ones((camera_data.shape[0], 1), dtype=float)]
 
-selected_row = [0, 2, 3, 4]
+selected_row = [0, 1, 2, 4]
 a = sp.Matrix(camera_argument[selected_row, :])
 b = sp.Matrix(tcp_argument[selected_row, :])
 X = a.solve(b)
-
-# print(X)
-
-
+print(X.T)
 ############################################################
 test_cameras_postions = np.ones((camera_coordinates.shape[0],3),dtype=float)
 for i in range(camera_positions.shape[0]):

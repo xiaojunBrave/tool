@@ -79,6 +79,7 @@ for i in range(c_positions.shape[0]):
     c_positions[[i],:] = np.array([[x,y,z]])
 # print(c_positions)
 c_positions_argument = np.c_[c_positions, np.ones((c_right.shape[0], 1), dtype=float)]
+print(c_positions_argument)
 result = c_positions_argument.dot(X)
 result[:,0:1] += t_position[0]
 result[:,1:2] += t_position[1]
