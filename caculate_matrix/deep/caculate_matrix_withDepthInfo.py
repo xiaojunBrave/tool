@@ -8,7 +8,7 @@
 import data_depth as dt
 import numpy as np
 import sympy as sp
-import tool as tl
+import caculate_matrix.tool as tl
 from numpy.linalg import inv
 
 tcp_base = dt.tcp_base
